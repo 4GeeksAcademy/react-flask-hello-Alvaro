@@ -1,3 +1,13 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+.formulario{
+    width: 15rem;
+    margin:auto;
+    margin-top: 1rem;
+}
+
+.nav{
+    width: 100%;
+}

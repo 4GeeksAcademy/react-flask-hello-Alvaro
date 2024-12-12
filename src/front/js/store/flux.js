@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			token:false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -46,9 +47,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			actualizador:()=>{
+				setStore({"token":prev => !prev})			
 			}
+
 		}
 	};
 };
 
 export default getState;
+
+
+
+// Gruadar algo en el local storage: localStorage.setItem("usuario", response)
+// Trar algo del local storage: localStorage.getItem("key")
+// Borrar algo del local storage: handleLogout =()=>{localStorage.removeItem("key")}
