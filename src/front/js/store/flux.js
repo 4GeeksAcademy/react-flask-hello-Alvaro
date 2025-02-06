@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			token:false
+			token: localStorage.getItem("token"),
+			user: localStorage.getItem("user"),
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -48,18 +49,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			actualizador:()=>{
-				setStore({"token":prev => !prev})			
-			}
-
+			//Creamos la funcion que controla la modificacion de token y user tanto en el store como en el localStorage
+			setAuth : (token, user) => {
+				setStore({"token":(token)});
+				setStore({"user":(user)});
+				if (token) {
+					localStorage.setItem("token", token);
+					localStorage.setItem("user", user);
+				} else {
+					localStorage.removeItem("token");
+					localStorage.removeItem("user");
+				}
+			},
 		}
-	};
+	}
 };
 
 export default getState;
 
 
 
-// Gruadar algo en el local storage: localStorage.setItem("usuario", response)
+// Guardar algo en el local storage: localStorage.setItem("usuario", response)
 // Trar algo del local storage: localStorage.getItem("key")
 // Borrar algo del local storage: handleLogout =()=>{localStorage.removeItem("key")}
